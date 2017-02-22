@@ -1,7 +1,4 @@
-# Create app directory
-# RUN mkdir -p /usr/src/togetherboard
 
-# FROM node:slim
 FROM ubuntu
 
 MAINTAINER Leo Li
@@ -12,36 +9,25 @@ RUN apt-get update
 # Install software 
 RUN apt-get install -y git
 
+RUN apt-get install -y curl
+
+# install our dependencies and nodejs
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+
 RUN apt-get install -y nodejs
 
 # Make demo dir
-RUN mkdir /user/demo/
+RUN mkdir /usr/demo/
 
-RUN cd /user/demo/
+RUN cd /usr/demo/ && git clone https://github.com/leejulee/TogetherBoard.git
 
-# Clone the conf files into the docker container
-RUN git clone https://github.com/leejulee/TogetherBoard.git 
+#RUN cd /usr/demo/TogetherBoard/
+WORKDIR /usr/demo/TogetherBoard
 
-RUN cd /user/demo/TogetherBoard && npm install
+RUN npm install
 
-WORKDIR /user/demo/TogetherBoard
+RUN npm install -g typescript live-server
 
 CMD [ "npm", "t" ]
 
 EXPOSE 8080
-
-#=================================================================
-# is local path, not container 
-# WORKDIR /usr/src/togetherboard
-
-# Install
-# npm install websocket optimist node-websocket-server --save
-# RUN npm start
-
-#RUN cd /usr/src/togetherboard
-
-# Port
-
-#EXPOSE 8199
-
-#CMD [ "npm", "start" ]
