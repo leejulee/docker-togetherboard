@@ -30,4 +30,4 @@ RUN npm install -g typescript live-server
 
 CMD [ "npm", "t" ]
 
-EXPOSE 8080
+EXPOSE 3010
