@@ -24,6 +24,8 @@ RUN cd /usr/demo/ && git clone https://github.com/leejulee/TogetherBoard.git
 #RUN cd /usr/demo/TogetherBoard/
 WORKDIR /usr/demo/TogetherBoard
 
+VOLUME /usr/TogetherBoard:/usr/demo/TogetherBoard
+
 RUN npm install
 
 RUN npm install -g typescript live-server
