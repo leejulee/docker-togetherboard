@@ -24,7 +24,7 @@ RUN cd /usr/demo/ && git clone https://github.com/leejulee/TogetherBoard.git
 #RUN cd /usr/demo/TogetherBoard/
 WORKDIR /usr/demo/TogetherBoard
 
-#VOLUME ['/usr/demo/TogetherBoard']
+VOLUME /usr/demo/TogetherBoard
 
 RUN npm install
 
