@@ -1,8 +1,6 @@
 
 FROM ubuntu
 
-VOLUME /usr/demo/TogetherBoard
-
 MAINTAINER Leo Li
 
 # Update aptitude with new repo
@@ -23,7 +21,6 @@ RUN mkdir /usr/demo/
 
 RUN cd /usr/demo/ && git clone https://github.com/leejulee/TogetherBoard.git
 
-#RUN cd /usr/demo/TogetherBoard/
 WORKDIR /usr/demo/TogetherBoard
 
 RUN npm install
